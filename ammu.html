@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      z-index: 2;
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: #444;
+      font-weight: normal;
+    }
+
+    button {
+      padding: 14px 35px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 15px;
+    }
+
+    #yes {
+      background-color: #e91e63;
+      color: white;
+    }
+
+    #yes:hover {
+      background-color: #c2185b;
+    }
+
+    #no {
+      background-color: #ccc;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: rgba(255, 0, 100, 0.6);
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Romantic Music (Auto Play, No Video) -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="card">
+    <h2>Hey AMMU 💕</h2>
+    <h1>Will you be my Valentine?</h1>
+    <button id="yes" onclick="goLove()">YES 💖</button>
+    <button id="no">NO Thodalla 🙈</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function goLove() {
+      document.body.innerHTML = `
+        <div class="card">
+          <h1>I love you ❤️</h1>
+          <h2>MISS YOU AMMUTTY 🥰</h2>
+          <p>VELLANDU 💍</p>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
